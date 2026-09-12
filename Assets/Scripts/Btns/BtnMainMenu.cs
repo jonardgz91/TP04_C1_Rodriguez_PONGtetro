@@ -22,5 +22,6 @@ public class BtnMainMenu : MonoBehaviour
     private void btnMainMenuClicked()
     {
         SceneManager.LoadScene("UI.General");
+        Time.timeScale = 1;
     }
 }
