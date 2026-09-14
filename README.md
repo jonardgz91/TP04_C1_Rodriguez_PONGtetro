@@ -1,4 +1,6 @@
 # PONGtrero // ESPAÑOL
+​Desarrollado por: Jonathan Rodríguez
+
 ## Objetivo
 
 Ganar la partida sumando 3 puntos antes que el rival (al mejor de 5).
@@ -47,6 +49,8 @@ Al llegar a 3 puntos, se muestra en pantalla qué jugador ganó y aparece un bot
 
 
 # PONGtrero // ENGLISH
+Developed by: Jonathan Rodríguez
+
 ## Objective
 
 Win the match by reaching 3 points before your opponent (best of 5).
