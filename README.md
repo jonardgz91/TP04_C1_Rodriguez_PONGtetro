@@ -1,5 +1,6 @@
 # PONGtrero // ESPAÑOL
 ​Desarrollado por: Jonathan Rodríguez
+https://jonardgz.itch.io/pongtrero
 
 ## Objetivo
 
@@ -50,6 +51,7 @@ Al llegar a 3 puntos, se muestra en pantalla qué jugador ganó y aparece un bot
 
 # PONGtrero // ENGLISH
 Developed by: Jonathan Rodríguez
+https://jonardgz.itch.io/pongtrero
 
 ## Objective
 
