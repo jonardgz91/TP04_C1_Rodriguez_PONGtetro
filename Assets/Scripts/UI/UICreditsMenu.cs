@@ -21,6 +21,8 @@ public class UICreditsMenu : MonoBehaviour
                           "\n" +
                           "No apoyo el uso de Inteligencia Artificial para el desarrollo de videojuegos, solo se realizo con fines educativos.\n";
 
+        // Suggestion: el texto del botón dice "Atas" en vez de "Atrás", y el título "CREDITOS" va con acento.
+        // Es el primer texto que ve el que abre los créditos.
         txtBackBtn.text = "Atas";
     }
 

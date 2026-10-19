@@ -2,6 +2,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Suggestion: SizeChange y SpeedChange son la misma clase con el campo del SO cambiado: mismo Awake, mismo Start, mismo OnDestroy y los mismos dos métodos.
+// Una sola clase con un enum serializado (Size o Speed) te deja un archivo en vez de dos.
 public class SizeChange : MonoBehaviour
 {
     [SerializeField] private PlayerDataSo player1;
@@ -29,6 +31,8 @@ public class SizeChange : MonoBehaviour
 
     private void Start()
     {
+        // Warning: los textos de la UI se escriben desde código en el Start, en este script y en SpeedChange, BtnQuit, UICreditsMenu y BtnColorChange.
+        // Esos textos van en el inspector del TMP_Text: si están en el código hay que recompilar para cambiar una palabra, y no se pueden traducir.
         textChangeSize.text = "CAMBIA EL TAMAÑO DEL JUGADOR 1";
         textChangeSize.alignment = TextAlignmentOptions.Center;
         textChangeSize.fontSize = fontSizeBtns;
@@ -48,6 +52,8 @@ public class SizeChange : MonoBehaviour
 
     private void OnDestroy()
     {
+        // Warning: RemoveAllListeners borra también lo que alguien haya cableado desde el inspector, no solo lo que registraste en el Awake. Está repetido en SpeedChange, BtnQuit, UICreditsMenu y los otros scripts de botón.
+        // Como registrás con AddListener(OnPlayer1SizeChange), dá de baja con RemoveListener(OnPlayer1SizeChange).
         player1Size.onValueChanged.RemoveAllListeners();
         player2Size.onValueChanged.RemoveAllListeners();
     }

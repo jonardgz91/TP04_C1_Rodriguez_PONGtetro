@@ -3,6 +3,8 @@ using UnityEngine;
 public class Players : MonoBehaviour
 {
     [SerializeField] private PlayerDataSo player;
+    // Warning: rbPlayers y moveSpeed son public. rbPlayers además se pide con GetComponent en el Awake, así que el [SerializeField] no hace falta.
+    // Dejalos private.
     [SerializeField] public Rigidbody2D rbPlayers;
     public float moveSpeed = 2f;
     private SpriteRenderer spriteRenderer;
@@ -28,6 +30,8 @@ public class Players : MonoBehaviour
     }
     private void Update()
     {
+        // Warning: el Update vuelve a leer el tamaño, la velocidad y el color del ScriptableObject en cada frame, y encima reasigna la escala del transform.
+        // Leelos en el Start y volvé a leerlos cuando el panel de settings se cierra, o que el slider avise con un evento. Hoy son tres lecturas y una escritura de escala por frame, por jugador.
         SetVerticalSize(player.verticalSize);
         moveSpeed = player.moveSpeed;
         spriteRenderer.color = player.color;
@@ -37,6 +41,8 @@ public class Players : MonoBehaviour
     {
         if (Input.GetKey(player.moveUp))
         {
+            // Bug: la velocidad se acumula (linearVelocity += ...) y el Rigidbody2D de los dos jugadores tiene m_LinearDamping en 0, así que nada la frena. Al soltar la tecla la paleta sigue viajando hasta chocar contra un clamp, y cuanto más tiempo mantenés la tecla más rápido queda.
+            // Asigná la velocidad en vez de sumarla: rbPlayers.linearVelocity = new Vector2(x, y) * moveSpeed, calculando primero la dirección de las cuatro teclas y normalizándola.
             rbPlayers.linearVelocity += (new Vector2(0, moveSpeed * Time.fixedDeltaTime));
         }
 

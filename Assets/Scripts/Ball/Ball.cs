@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 
+// Error: el archivo se llama Ball.cs y la clase MoveBall. Unity busca dentro de cada .cs una clase con el mismo nombre que el archivo; cuando no la encuentra, el componente no se puede agregar y los que ya están puestos pueden aparecer como Missing Script.
+// En el TP03 te marqué cinco archivos así y siguen quedando cuatro: este, BtnBack.cs (clase BackBtn), BtnQuit.cs (clase UIBackBtn) y BtnStartGame.cs (clase StartGameBtn). Renombralos desde el Project de Unity.
 public class MoveBall : MonoBehaviour
 {
     [SerializeField] private Players player1;
@@ -14,6 +16,8 @@ public class MoveBall : MonoBehaviour
     [SerializeField] private float bottomLimit = -5f;
     [SerializeField] public TMP_Text textContinue;
     [SerializeField] public TMP_Text textTimer;
+    // Error: no hay nada en este script que aumente la velocidad de la pelota. ballSpeed se usa solo en el AddForce del saque y ballSpeedMax solo para acotar en el FixedUpdate: entre los dos no hay ninguna línea que sume.
+    // La consigna pide que la velocidad aumente con el tiempo o con los impactos. Alcanza con un OnCollisionEnter2D que haga ballSpeed = Mathf.Min(ballSpeed + incremento, ballSpeedMax) y reaplique la velocidad sobre la dirección normalizada.
     private float ballSpeed = 5f;
     private float ballSpeedMax = 12f;
     private float dirX = -1f;
@@ -100,6 +104,8 @@ public class MoveBall : MonoBehaviour
     public void ResetBall()
     {
         ball.linearVelocity = Vector2.zero;
+        // Warning: el objeto tiene Rigidbody2D y acá se escribe transform.position, que lo teletransporta salteando la detección de colisiones. Lo mismo en la línea 75.
+        // Usá ball.position = Vector2.zero, que es la versión física del mismo reseteo.
         transform.position = Vector3.zero;
         dirX = -dirX;
         dirY = -dirY;

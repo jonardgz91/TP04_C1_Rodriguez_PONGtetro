@@ -1,3 +1,5 @@
+// Error: `using UnityEditor.ShaderGraph.Internal;` en un ScriptableObject de runtime. El namespace UnityEditor no existe fuera del editor, así que el proyecto anda con Play pero el Build no compila.
+// El archivo no usa nada de ese namespace: lo agregó el autocompletado. Borrá la línea. Es el mismo problema que arrastrás desde el TP02.
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 

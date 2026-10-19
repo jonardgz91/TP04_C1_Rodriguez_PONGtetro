@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,6 +29,8 @@ public class PlayersScore : MonoBehaviour
 
         textContinue.gameObject.SetActive(true);
 
+        // Warning: la condición de victoria compara con ==. Si algún día un jugador sumara dos puntos juntos, el marcador pasa de largo y el partido no termina nunca.
+        // Usá >= en las dos comparaciones. Y scoreP1, scoreP2 y matchOver pueden ser private con una property de solo lectura.
         if (scoreP1 == gameSettings.pointsToWin)
         {
             textContinue.text = "Player 1 Wins!";

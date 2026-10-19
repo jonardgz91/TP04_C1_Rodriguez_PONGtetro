@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class SpeedChange : MonoBehaviour
 {
+    // Suggestion: moveSpeed está declarado, es public y no lo lee ni lo escribe nadie en todo el proyecto.
+    // Borralo.
     public float moveSpeed = 100f;
     [SerializeField] private PlayerDataSo player1;
     [SerializeField] private PlayerDataSo player2;
